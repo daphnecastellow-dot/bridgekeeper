@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bridgekeeper"
+version = "0.1.0"
+description = "Preserve compact continuity handoffs across time."
+requires-python = ">=3.10"
+
+[project.scripts]
+bridgekeeper = "bridgekeeper:main"
+
+[tool.setuptools]
+py-modules = ["bridgekeeper"]
