@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/daphnecastellow-dot/bridgekeeper/schema.json",
+  "title": "Bridgekeeper 0.1 handoff",
+  "type": "object",
+  "required": ["format", "project", "bridge_id", "created_at", "supersedes", "authorities", "canonical", "changes", "corrections", "unresolved"],
+  "properties": {
+    "format": {"const": "bridgekeeper/0.1"},
+    "project": {"type": "string", "minLength": 1},
+    "bridge_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "minLength": 1},
+    "supersedes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "authorities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "location", "kind", "note"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "label": {"type": "string", "minLength": 1},
+          "location": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["tool-record", "document", "repository", "commit", "specification", "conversation", "other"]},
+          "note": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "canonical": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "value", "authorities", "note"],
+        "properties": {
+          "key": {"type": "string", "minLength": 1},
+          "value": {},
+          "authorities": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "note": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "before", "after", "reason", "authorities"],
+        "properties": {
+          "key": {"type": "string", "minLength": 1},
+          "before": {},
+          "after": {},
+          "reason": {"type": "string", "minLength": 1},
+          "authorities": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+        },
+        "additionalProperties": false
+      }
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "before", "after", "reason", "authorities"],
+        "properties": {
+          "key": {"type": "string", "minLength": 1},
+          "before": {},
+          "after": {},
+          "reason": {"type": "string", "minLength": 1},
+          "authorities": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+        },
+        "additionalProperties": false
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "question", "authorities", "reopen_when", "note"],
+        "properties": {
+          "key": {"type": "string", "minLength": 1},
+          "question": {"type": "string", "minLength": 1},
+          "authorities": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "reopen_when": {"type": "string"},
+          "note": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
