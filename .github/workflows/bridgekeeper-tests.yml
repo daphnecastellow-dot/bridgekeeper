@@ -1,0 +1,39 @@
+name: Bridgekeeper tests
+
+on:
+  push:
+    paths:
+      - "bridgekeeper.py"
+      - "pyproject.toml"
+      - "schema.json"
+      - "tests/**"
+      - "examples/**"
+      - ".github/workflows/bridgekeeper-tests.yml"
+  pull_request:
+    paths:
+      - "bridgekeeper.py"
+      - "pyproject.toml"
+      - "schema.json"
+      - "tests/**"
+      - "examples/**"
+      - ".github/workflows/bridgekeeper-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate demo handoff
+        run: python bridgekeeper.py validate examples/demo.json
+      - name: Render demo
+        run: |
+          python bridgekeeper.py render examples/demo.json -o /tmp/bridgekeeper-demo.md
+          python bridgekeeper.py mermaid examples/demo.json -o /tmp/bridgekeeper-demo.mmd
