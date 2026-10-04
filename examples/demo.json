@@ -1,0 +1,64 @@
+{
+  "format": "bridgekeeper/0.1",
+  "project": "North Reach research",
+  "bridge_id": "bridge-015",
+  "created_at": "2026-10-04T22:35:00Z",
+  "supersedes": ["bridge-014"],
+  "authorities": [
+    {
+      "id": "A001",
+      "label": "Sourceweave record S004",
+      "location": "sourceweave:north-reach:S004",
+      "kind": "tool-record",
+      "note": "Current source record for the event date."
+    },
+    {
+      "id": "A002",
+      "label": "Evidence Ledger item E006",
+      "location": "evidence-ledger:north-reach:E006",
+      "kind": "tool-record",
+      "note": "Classification support for the source."
+    }
+  ],
+  "canonical": [
+    {
+      "key": "event-date",
+      "value": "1903",
+      "authorities": ["A001"],
+      "note": "Use 1903 in current project materials."
+    },
+    {
+      "key": "source-S004-classification",
+      "value": "later-retelling",
+      "authorities": ["A002"],
+      "note": "Current evidence classification."
+    }
+  ],
+  "changes": [
+    {
+      "key": "source-S004-classification",
+      "before": "reference",
+      "after": "later-retelling",
+      "reason": "The project's source taxonomy was refined after provenance review.",
+      "authorities": ["A002"]
+    }
+  ],
+  "corrections": [
+    {
+      "key": "event-date",
+      "before": "1904",
+      "after": "1903",
+      "reason": "The earlier date came from a transcription error.",
+      "authorities": ["A001"]
+    }
+  ],
+  "unresolved": [
+    {
+      "key": "second-witness-identity",
+      "question": "The identity of the second witness remains unverified.",
+      "authorities": [],
+      "reopen_when": "A contemporaneous source names the second witness.",
+      "note": "Do not fill from later retellings alone."
+    }
+  ]
+}
