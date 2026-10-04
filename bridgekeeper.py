@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preserve compact continuity handoffs without silently rewriting prior state."""
+"""Preserve compact continuity handoffs without silently rewriting prior state.\n\nBridge files declare continuity explicitly rather than inferring it from recency.\n"""
 
 from __future__ import annotations
 
